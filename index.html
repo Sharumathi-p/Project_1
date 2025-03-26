@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeGuard AI - Video Stream</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        h1 {
+            color: #333;
+        }
+        #video-feed {
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        #status {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>SafeGuard AI - Video Stream</h1>
+    <img id="video-feed" src="{{ url_for('video_feed') }}" alt="Video Feed" width="700" height="450">
+    <div id="status">Loading video feed...</div>
+
+    <script>
+        // Check if the video feed is loading
+        const videoFeed = document.getElementById("video-feed");
+        const statusDiv = document.getElementById("status");
+
+        videoFeed.onload = function() {
+            statusDiv.textContent = "Video feed loaded successfully!";
+        };
+
+        videoFeed.onerror = function() {
+            statusDiv.textContent = "Error: Could not load video feed.";
+        };
+    </script>
+</body>
+</html>
